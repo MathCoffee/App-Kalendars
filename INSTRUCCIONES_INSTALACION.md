@@ -66,8 +66,44 @@ npm run tauri build
 
 ---
 
+## 🤖 Instalación y Compilación para Android
+
+Tauri v2 permite compilar la aplicación para dispositivos móviles Android en formato **APK** (para instalación directa) y **AAB** (para Google Play).
+
+### 📲 Cómo Instalar el archivo `.apk` en tu Celular (Sideloading):
+1. **Descargar el archivo:** Entra a la sección de **Releases** de tu repositorio de GitHub desde tu teléfono Android y descarga el archivo con extensión `.apk` (por ejemplo, `app-universal-release-unsigned.apk` o similar).
+2. **Permitir Orígenes Desconocidos:** Al abrir el instalador por primera vez, Android te pedirá permisos. Ve a **Ajustes** y activa **"Permitir la instalación desde esta fuente"** (normalmente tu navegador o tu administrador de archivos).
+3. **Instalar de Todas Formas:** Al ser una app autofirmada/sin firmar en Play Store, Google Play Protect podría mostrar una advertencia. Haz clic en **"Instalar de todas formas"** (o "Instalar sin enviar").
+4. ¡Listo! Abre la aplicación en tu celular.
+
+### 🛠️ Compilación Local para Android:
+Si deseas compilar la aplicación para Android en tu propia computadora:
+1. **Requisitos:** Instala **Android Studio**, el **NDK (Side by side)** y la herramienta de línea de comandos de Android.
+2. **Variables de entorno:** Configura las variables `ANDROID_HOME` y `NDK_HOME` en tu terminal (ej. en tu `.zshrc` o `.bashrc` en macOS):
+   ```bash
+   export ANDROID_HOME="$HOME/Library/Android/sdk"
+   export NDK_HOME="$ANDROID_HOME/ndk/<versión_instalada>"
+   ```
+3. **Instalar los targets de Rust:**
+   ```bash
+   rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+   ```
+4. **Compilar:**
+   * Para generar el APK de release:
+     ```bash
+     npm run tauri android build -- --apk
+     ```
+   * Para probar en un emulador o dispositivo conectado (modo desarrollo):
+     ```bash
+     npm run tauri android dev
+     ```
+* **Resultado**: Los archivos compilados se guardan en la carpeta:
+  `src-tauri/gen/android/app/build/outputs/apk/release/`
+
+---
+
 ## 🎯 Estructura de Ventanas Creadas en Escritorio
 
-Al ejecutar el ejecutable compilado, la aplicación levantará dos ventanas independientes:
+Al ejecutar el ejecutable compilado en escritorio, la aplicación levantará dos ventanas independientes:
 1. **Ventana Principal (`1200x800`)**: Contiene la aplicación completa (Conversor, Inverso, Tablero y Calculadora).
 2. **Widget Independiente (`340x440`)**: Una ventana flotante, compacta y que se mantiene siempre al frente (`alwaysOnTop`) sobre el escritorio, mostrando la cuenta calendárica en tiempo real.

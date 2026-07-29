@@ -84,3 +84,35 @@ El programa incluye un modo **Widget compacto** que muestra exclusivamente el nu
 2. Importa la plantilla y recursos de `src/assets/images/` siguiendo la guía en [README_HUAWEI.md](file:///Users/ramiro/Documents/AI-Proyects/App-kalendars/watch-apps/huawei-watch/README_HUAWEI.md).
 3. Exporta la carátula como paquete **`.hwt`**.
 4. Instálala a través de la app **Huawei Health (Salud de Huawei)** en tu teléfono.
+
+---
+
+## 6. Cómo Instalar y Compilar en Android (Celular)
+
+El proyecto está configurado para compilar instaladores móviles nativos de Android.
+
+### Método A: Descargar desde GitHub Releases (Fácil)
+1. Entra a la sección de **Releases** de tu repositorio de GitHub desde tu celular.
+2. Descarga el archivo ejecutable con extensión `.apk`.
+3. Al abrirlo, si Android te indica que no puedes instalar apps de orígenes desconocidos, ve a **Ajustes** del aviso y activa **"Permitir la instalación desde esta fuente"** (para tu navegador o gestor de archivos).
+4. Google Play Protect podría advertir que es una app sin firmar en su tienda. Elige **"Instalar de todas formas"** para completar la instalación.
+
+### Método B: Compilar localmente en tu Computadora
+1. Asegúrate de tener instalado **Android Studio**, el **NDK (Side by side)** y las herramientas de línea de comandos de Android.
+2. Configura las variables de entorno `ANDROID_HOME` y `NDK_HOME` en tu sistema.
+3. Instala los targets de Android para Rust:
+   ```bash
+   rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+   ```
+4. Abre la terminal en el proyecto y ejecuta:
+   * Para generar el archivo de instalación `.apk`:
+     ```bash
+     npm run tauri android build -- --apk
+     ```
+   * Para probar en tiempo real en tu celular (conectado por USB en modo depuración) o emulador:
+     ```bash
+     npm run tauri android dev
+     ```
+5. **Ubicación del archivo compilado:**
+   - Se guardará en la ruta:
+     `src-tauri/gen/android/app/build/outputs/apk/release/`
