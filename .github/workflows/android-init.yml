@@ -1,0 +1,48 @@
+name: Android Project Initialization
+on:
+  workflow_dispatch: # Permite iniciar manualmente el flujo desde la pestaña Actions en GitHub
+
+jobs:
+  init-android:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android,armv7-linux-androideabi,i686-linux-android,x86_64-linux-android
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Initialize Tauri Android project
+        run: npx tauri android init --ci
+
+      - name: Commit and push Android project files
+        run: |
+          git config --global user.name "MathCoffee"
+          git config --global user.email "mathcoffee@users.noreply.github.com"
+          git add -A
+          git commit -m "Initialize Tauri Android project files [ci skip]" || exit 0
+          git push origin main
