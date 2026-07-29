@@ -14,10 +14,13 @@ jobs:
         settings:
           - platform: 'macos-latest'
             args: ''
+            mobile: false
           - platform: 'windows-latest'
             args: ''
+            mobile: false
           - platform: 'ubuntu-latest' # Para Android usamos Ubuntu
-            args: '--target android'
+            args: ''
+            mobile: true
     runs-on: ${{ matrix.settings.platform }}
     steps:
       - name: Checkout repository
@@ -37,6 +40,19 @@ jobs:
       - name: Setup Android SDK (Ubuntu only)
         if: matrix.settings.platform == 'ubuntu-latest'
         uses: android-actions/setup-android@v3
+
+      - name: Setup Android NDK (Ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-latest'
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r27c
+
+      - name: Set NDK Environment Variables (Ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-latest'
+        run: |
+          echo "ANDROID_NDK_HOME=${{ steps.setup-ndk.outputs.ndk-path }}" >> $GITHUB_ENV
+          echo "NDK_HOME=${{ steps.setup-ndk.outputs.ndk-path }}" >> $GITHUB_ENV
 
       - name: Setup Java (Ubuntu only)
         if: matrix.settings.platform == 'ubuntu-latest'
@@ -62,3 +78,4 @@ jobs:
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.settings.args }}
+          mobile: ${{ matrix.settings.mobile }}
