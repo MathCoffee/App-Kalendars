@@ -14,13 +14,13 @@ jobs:
         settings:
           - platform: 'macos-latest'
             args: ''
-            mobile: false
+            mobile: ''
           - platform: 'windows-latest'
             args: ''
-            mobile: false
+            mobile: ''
           - platform: 'ubuntu-latest' # Para Android usamos Ubuntu
             args: ''
-            mobile: true
+            mobile: 'android'
     runs-on: ${{ matrix.settings.platform }}
     steps:
       - name: Checkout repository
