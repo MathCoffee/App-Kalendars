@@ -10,7 +10,6 @@ jobs:
       contents: write
     strategy:
       fail-fast: false
-      id: build-matrix
       matrix:
         settings:
           - platform: 'macos-latest'
