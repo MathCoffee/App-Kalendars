@@ -1,0 +1,469 @@
+html {
+  overflow-x: hidden;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #e2e8f0;
+    /* forced dark */
+    background-color: #121212;
+    /* forced dark */
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #1a1a1a;
+  }
+}
+
+
+/* GLOBAL THEMES FOR BOOTSTRAP */
+
+/* Estilos de transición suaves para cambios de tema */
+body,
+.card,
+.card-header,
+.card-body,
+.card-footer,
+table,
+td,
+th,
+.form-control,
+.form-select,
+.input-group-text {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* --- TEMA OSCURO (Por defecto y cuando está activo) --- */
+body,
+body.dark-theme {
+  background-color: #121212 !important;
+  color: #e2e8f0 !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body.dark-theme .card {
+  background-color: #1e293b !important;
+  border: 1px solid #334155 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
+  color: #f8fafc !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+body.dark-theme .card-header {
+  background-color: #0f172a !important;
+  border-bottom: 1px solid #334155 !important;
+  font-weight: bold;
+}
+
+body.dark-theme .card-body,
+body.dark-theme .card-footer {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme table {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .table {
+  --bs-table-bg: transparent !important;
+  --bs-table-color: #e2e8f0 !important;
+  --bs-table-border-color: #334155 !important;
+}
+
+body.dark-theme .table td,
+body.dark-theme .table th {
+  border-color: #334155 !important;
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+  background-color: #334155 !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme .form-control:focus,
+body.dark-theme .form-select:focus {
+  background-color: #1e293b !important;
+  border-color: #9333ea !important;
+  box-shadow: 0 0 0 0.25rem rgba(147, 51, 234, 0.25) !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme .form-check-input {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+}
+
+body.dark-theme .form-check-input:checked {
+  background-color: #7e22ce !important;
+  border-color: #9333ea !important;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .input-group-text {
+  background-color: #475569 !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+
+/* Column containing digit '1' starting the trecena gets a darker background */
+body.dark-theme .bg-column-one,
+body.dark-theme .table td.bg-column-one {
+  background-color: #0b0f19 !important;
+}
+
+/* NAVBAR & MODERN THEME */
+body.dark-theme .navbar-purple {
+  background: linear-gradient(135deg, #0486ffe0, #0084ffe7) !important;
+  box-shadow: 0 4px 15px rgba(193, 194, 194, 0.418);
+  transition: all 0.3s ease;
+}
+
+body.dark-theme .custom-navbar .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+body.dark-theme .custom-navbar .nav-link:hover {
+  color: #003d58 !important;
+}
+
+body.dark-theme .custom-navbar .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background-color: #9ce1ff;
+  border-radius: 2px;
+}
+
+/* --- TEMA CLARO --- */
+body.light-theme {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body.light-theme .card {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03) !important;
+  color: #0f172a !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+body.light-theme .card-header {
+  background-color: #f1f5f9 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+  font-weight: bold;
+}
+
+body.light-theme .card-body,
+body.light-theme .card-footer {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+body.light-theme table {
+  color: #1e293b !important;
+}
+
+body.light-theme .table {
+  --bs-table-bg: transparent !important;
+  --bs-table-color: #1e293b !important;
+  --bs-table-border-color: #e2e8f0 !important;
+}
+
+body.light-theme .table td,
+body.light-theme .table th {
+  border-color: #e2e8f0 !important;
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+body.light-theme .form-control,
+body.light-theme .form-select {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .form-control:focus,
+body.light-theme .form-select:focus {
+  background-color: #ffffff !important;
+  border-color: #9333ea !important;
+  box-shadow: 0 0 0 0.25rem rgba(147, 51, 234, 0.25) !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .form-check-input {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .form-check-input:checked {
+  background-color: #7e22ce !important;
+  border-color: #9333ea !important;
+}
+
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6 {
+  color: #0f172a !important;
+}
+
+body.light-theme .input-group-text {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+/* Column containing digit '1' starting the trecena gets a lighter background */
+body.light-theme .bg-column-one,
+body.light-theme .table td.bg-column-one {
+  background-color: #f1f5f9 !important;
+}
+
+/* --- CLASES DE UTILIDAD GENERAL PARA TEMAS --- */
+.text-theme-muted {
+  transition: color 0.3s ease;
+}
+
+body.dark-theme .text-theme-muted {
+  color: #94a3b8 !important;
+}
+
+body.light-theme .text-theme-muted {
+  color: #475569 !important;
+}
+
+/* Controlar color-scheme nativo de entradas */
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+  color-scheme: dark !important;
+}
+
+body.light-theme input,
+body.light-theme select,
+body.light-theme textarea {
+  color-scheme: light !important;
+}
+
+/* NAVBAR & MODERN THEME */
+body.light-theme .navbar-purple {
+  background: linear-gradient(135deg, #00347cf5, #00205bc8) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+body.light-theme .custom-navbar .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+body.light-theme .custom-navbar .nav-link:hover {
+  color: #38BDF8 !important;
+}
+
+body.light-theme .custom-navbar .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background-color: #38BDF8;
+  border-radius: 2px;
+}
+
+/* --- SEPARADOR DE COLUMNAS (MEZA Y CASO) --- */
+
+/* Apuntamos directamente a th y td para ganar la especificidad */
+body.dark-theme .table th.col-divider,
+body.dark-theme .table td.col-divider {
+  border-right-width: 3px !important;
+  border-right-style: solid !important;
+  border-right-color: #018aad !important;
+  /* Violeta/Morado vivo */
+}
+
+/* Para tema claro si deseas un tono un poco más oscuro/saturado */
+body.light-theme .table th.col-divider,
+body.light-theme .table td.col-divider {
+  border-right-width: 3px !important;
+  border-right-style: solid !important;
+  border-right-color: #cad8ee !important;
+}
+
+/* --- COLORES SUAVES DE DESTACADO EN EL TABLERO (CON TRANSICIÓN) --- */
+
+/* Animales (Verde) */
+body.dark-theme .table td.cell-animales,
+body.dark-theme .cell-animales,
+.cell-animales {
+  background-color: rgba(34, 197, 94, 0.35) !important;
+  border: 1px solid rgba(34, 197, 94, 0.6) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .table td.cell-animales,
+body.light-theme .cell-animales {
+  background-color: rgba(34, 197, 94, 0.15) !important;
+  border: 1px solid rgba(34, 197, 94, 0.4) !important;
+  color: #166534 !important;
+}
+
+/* Naturales (Amarillo/Dorado) */
+body.dark-theme .table td.cell-naturales,
+body.dark-theme .cell-naturales,
+.cell-naturales {
+  background-color: rgba(234, 179, 8, 0.35) !important;
+  border: 1px solid rgba(234, 179, 8, 0.6) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .table td.cell-naturales,
+body.light-theme .cell-naturales {
+  background-color: rgba(234, 179, 8, 0.15) !important;
+  border: 1px solid rgba(234, 179, 8, 0.4) !important;
+  color: #854d0e !important;
+}
+
+/* Objetos / Cosas (Cian/Azul Claro) */
+body.dark-theme .table td.cell-cosas,
+body.dark-theme .cell-cosas,
+.cell-cosas {
+  background-color: rgba(6, 182, 212, 0.35) !important;
+  border: 1px solid rgba(6, 182, 212, 0.6) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .table td.cell-cosas,
+body.light-theme .cell-cosas {
+  background-color: rgba(6, 182, 212, 0.15) !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+  color: #075985 !important;
+}
+
+/* Abstractos (Morado) */
+body.dark-theme .table td.cell-abstractos,
+body.dark-theme .cell-abstractos,
+.cell-abstractos {
+  background-color: rgba(168, 85, 247, 0.35) !important;
+  border: 1px solid rgba(168, 85, 247, 0.6) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .table td.cell-abstractos,
+body.light-theme .cell-abstractos {
+  background-color: rgba(168, 85, 247, 0.15) !important;
+  border: 1px solid rgba(168, 85, 247, 0.4) !important;
+  color: #6b21a8 !important;
+}
+
+/* Vegetales (Azul) */
+body.dark-theme .table td.cell-vegetales,
+body.dark-theme .cell-vegetales,
+.cell-vegetales {
+  background-color: rgba(59, 130, 246, 0.35) !important;
+  border: 1px solid rgba(59, 130, 246, 0.6) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .table td.cell-vegetales,
+body.light-theme .cell-vegetales {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.4) !important;
+  color: #1e40af !important;
+}
