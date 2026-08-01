@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
@@ -18,6 +18,7 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 
 function AppContent() {
   const location = useLocation();
+  const navigate = useNavigate();
   const esPaginaToro = location.pathname === '/toro';
   const esPaginaWidget = location.pathname === '/widget';
   const { theme } = useTheme();
@@ -53,6 +54,8 @@ function AppContent() {
 
   // Si se consulta en modo Widget puro / independiente
   if (esPaginaWidget) {
+    const queryParams = new URLSearchParams(location.search);
+    const isStandalone = queryParams.get('standalone') === 'true';
     return (
       <div
         className="d-flex justify-content-center align-items-center"
@@ -62,7 +65,10 @@ function AppContent() {
           padding: '20px'
         }}
       >
-        <MiniWidget />
+        <MiniWidget
+          onExpand={!isStandalone ? () => navigate('/') : undefined}
+          isStandalone={isStandalone}
+        />
       </div>
     );
   }
